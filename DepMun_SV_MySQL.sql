@@ -1,35 +1,71 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versión del servidor:         10.1.21-MariaDB - mariadb.org binary distribution
--- SO del servidor:              Win64
--- HeidiSQL Versión:             9.4.0.5125
--- --------------------------------------------------------
+-- MySQL Workbench Forward Engineering
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema el_salvador
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `el_salvador` ;
+
+-- -----------------------------------------------------
+-- Schema el_salvador
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `el_salvador` DEFAULT CHARACTER SET utf8 ;
+USE `el_salvador` ;
+
+-- -----------------------------------------------------
+-- Table `el_salvador`.`zonesv`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `el_salvador`.`zonesv` ;
+
+CREATE TABLE IF NOT EXISTS `el_salvador`.`zonesv` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `ZoneName` VARCHAR(15) NOT NULL COMMENT 'Nombre de las zonas geógraficas de El Salvador',
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Zonas geográficas de El Salvador';
+
+-- Volcando datos para la tabla el_salvador.zonesv: ~4 rows (aproximadamente)
+DELETE FROM `zonesv`;
+/*!40000 ALTER TABLE `zonesv` DISABLE KEYS */;
+INSERT INTO `zonesv` (`ID`, `ZoneName`) VALUES
+	(1, 'Occidental'),
+	(2, 'Central'),
+	(3, 'Paracentral'),
+	(4, 'Oriental');
+/*!40000 ALTER TABLE `zonesv` ENABLE KEYS */;
 
 
--- Volcando estructura de base de datos para el_salvador
-DROP DATABASE IF EXISTS `el_salvador`;
-CREATE DATABASE IF NOT EXISTS `el_salvador` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `el_salvador`;
+-- -----------------------------------------------------
+-- Table `el_salvador`.`depsv`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `el_salvador`.`depsv` ;
 
--- Volcando estructura para tabla el_salvador.depsv
-DROP TABLE IF EXISTS `depsv`;
-CREATE TABLE IF NOT EXISTS `depsv` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `DepName` varchar(30) NOT NULL COMMENT 'Nombre del departamento',
-  `ISOCode` char(5) NOT NULL COMMENT 'Código ISO Departamentos',
-  `ZONESV_ID` int(11) NOT NULL COMMENT 'Zona geográfica del departamento',
+CREATE TABLE IF NOT EXISTS `el_salvador`.`depsv` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `DepName` VARCHAR(30) NOT NULL COMMENT 'Nombre del departamento',
+  `ISOCode` CHAR(5) NOT NULL COMMENT 'Código ISO Departamentos',
+  `ZONESV_ID` INT(11) NOT NULL COMMENT 'Zona geográfica del departamento',
   PRIMARY KEY (`ID`),
-  KEY `fk_DEPSV_ZONESV_idx` (`ZONESV_ID`),
-  CONSTRAINT `fk_DEPSV_ZONESV` FOREIGN KEY (`ZONESV_ID`) REFERENCES `zonesv` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='Departamentos de El Salvador';
+  INDEX `fk_DEPSV_ZONESV_idx` (`ZONESV_ID` ASC) VISIBLE,
+  CONSTRAINT `fk_DEPSV_ZONESV`
+    FOREIGN KEY (`ZONESV_ID`)
+    REFERENCES `el_salvador`.`zonesv` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 15
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Departamentos de El Salvador';
 
--- Volcando datos para la tabla el_salvador.depsv: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla el_salvador.depsv: ~14 rows (aproximadamente)
 DELETE FROM `depsv`;
 /*!40000 ALTER TABLE `depsv` DISABLE KEYS */;
 INSERT INTO `depsv` (`ID`, `DepName`, `ISOCode`, `ZONESV_ID`) VALUES
@@ -49,18 +85,28 @@ INSERT INTO `depsv` (`ID`, `DepName`, `ISOCode`, `ZONESV_ID`) VALUES
 	(14, 'La Unión', 'SV-UN', 4);
 /*!40000 ALTER TABLE `depsv` ENABLE KEYS */;
 
--- Volcando estructura para tabla el_salvador.munsv
-DROP TABLE IF EXISTS `munsv`;
-CREATE TABLE IF NOT EXISTS `munsv` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `MunName` varchar(100) NOT NULL COMMENT 'Nombre del Municipio',
-  `DEPSV_ID` int(11) NOT NULL COMMENT 'Departamento al cual pertenece el municipio',
-  PRIMARY KEY (`ID`,`DEPSV_ID`),
-  KEY `fk_MUNSV_DEPSV1_idx` (`DEPSV_ID`),
-  CONSTRAINT `fk_MUNSV_DEPSV1` FOREIGN KEY (`DEPSV_ID`) REFERENCES `depsv` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8 COMMENT='Municipios de El Salvador';
+-- -----------------------------------------------------
+-- Table `el_salvador`.`munsv`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `el_salvador`.`munsv` ;
 
--- Volcando datos para la tabla el_salvador.munsv: ~0 rows (aproximadamente)
+CREATE TABLE IF NOT EXISTS `el_salvador`.`munsv` (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `MunName` VARCHAR(100) NOT NULL COMMENT 'Nombre del Municipio',
+  `DEPSV_ID` INT(11) NOT NULL COMMENT 'Departamento al cual pertenece el municipio',
+  PRIMARY KEY (`ID`, `DEPSV_ID`),
+  INDEX `fk_MUNSV_DEPSV1_idx` (`DEPSV_ID` ASC) VISIBLE,
+  CONSTRAINT `fk_MUNSV_DEPSV1`
+    FOREIGN KEY (`DEPSV_ID`)
+    REFERENCES `el_salvador`.`depsv` (`ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 263
+DEFAULT CHARACTER SET = utf8
+COMMENT = 'Municipios de El Salvador';
+
+-- Volcando datos para la tabla el_salvador.munsv: ~262 rows (aproximadamente)
 DELETE FROM `munsv`;
 /*!40000 ALTER TABLE `munsv` DISABLE KEYS */;
 INSERT INTO `munsv` (`ID`, `MunName`, `DEPSV_ID`) VALUES
@@ -328,24 +374,7 @@ INSERT INTO `munsv` (`ID`, `MunName`, `DEPSV_ID`) VALUES
 	(262, 'Verapaz', 10);
 /*!40000 ALTER TABLE `munsv` ENABLE KEYS */;
 
--- Volcando estructura para tabla el_salvador.zonesv
-DROP TABLE IF EXISTS `zonesv`;
-CREATE TABLE IF NOT EXISTS `zonesv` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ZoneName` varchar(15) NOT NULL COMMENT 'Nombre de las zonas geógraficas de El Salvador',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Zonas geográficas de El Salvador';
 
--- Volcando datos para la tabla el_salvador.zonesv: ~4 rows (aproximadamente)
-DELETE FROM `zonesv`;
-/*!40000 ALTER TABLE `zonesv` DISABLE KEYS */;
-INSERT INTO `zonesv` (`ID`, `ZoneName`) VALUES
-	(1, 'Occidental'),
-	(2, 'Central'),
-	(3, 'Paracentral'),
-	(4, 'Oriental');
-/*!40000 ALTER TABLE `zonesv` ENABLE KEYS */;
-
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
