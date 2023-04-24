@@ -19,10 +19,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 DROP DATABASE IF EXISTS el_salvador;
---
--- TOC entry 4344 (class 1262 OID 33002750)
--- Name: da87s377gkqpv7; Type: DATABASE; Schema: -; Owner: qllgvlhmvkcwsw
---
 
 CREATE DATABASE el_salvador WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
 
@@ -336,20 +332,21 @@ ALTER TABLE ONLY public.zonesv ALTER COLUMN id SET DEFAULT nextval('public.zones
 -- Data for Name: depsv; Type: TABLE DATA; Schema: public; Owner: qllgvlhmvkcwsw
 --
 
-INSERT INTO public.depsv VALUES (1, 'Ahuachapán', 'SV-AH', 1);
-INSERT INTO public.depsv VALUES (2, 'Santa Ana', 'SV-SA', 1);
-INSERT INTO public.depsv VALUES (3, 'Sonsonate', 'SV-SO', 1);
-INSERT INTO public.depsv VALUES (4, 'La Libertad', 'SV-LI', 2);
-INSERT INTO public.depsv VALUES (5, 'Chalatenango', 'SV-CH', 2);
-INSERT INTO public.depsv VALUES (6, 'San Salvador', 'SV-SS', 2);
-INSERT INTO public.depsv VALUES (7, 'Cuscatlán', 'SV-CU', 3);
-INSERT INTO public.depsv VALUES (8, 'La Paz', 'SV-PA', 3);
-INSERT INTO public.depsv VALUES (9, 'Cabañas', 'SV-CA', 3);
-INSERT INTO public.depsv VALUES (10, 'San Vicente', 'SV-SV', 3);
-INSERT INTO public.depsv VALUES (11, 'Usulután', 'SV-US', 4);
-INSERT INTO public.depsv VALUES (12, 'Morazán', 'SV-MO', 4);
-INSERT INTO public.depsv VALUES (13, 'San Miguel', 'SV-SM', 4);
-INSERT INTO public.depsv VALUES (14, 'La Unión', 'SV-UN', 4);
+INSERT INTO public.depsv
+VALUES (1, 'Ahuachapán', 'SV-AH', 1),
+       (2, 'Santa Ana', 'SV-SA', 1),
+       (3, 'Sonsonate', 'SV-SO', 1),
+       (4, 'La Libertad', 'SV-LI', 2),
+       (5, 'Chalatenango', 'SV-CH', 2),
+       (6, 'San Salvador', 'SV-SS', 2),
+       (7, 'Cuscatlán', 'SV-CU', 3),
+       (8, 'La Paz', 'SV-PA', 3),
+       (9, 'Cabañas', 'SV-CA', 3),
+       (10, 'San Vicente', 'SV-SV', 3),
+       (11, 'Usulután', 'SV-US', 4),
+       (12, 'Morazán', 'SV-MO', 4),
+       (13, 'San Miguel', 'SV-SM', 4),
+       (14, 'La Unión', 'SV-UN', 4);
 
 
 --
@@ -358,268 +355,269 @@ INSERT INTO public.depsv VALUES (14, 'La Unión', 'SV-UN', 4);
 -- Data for Name: munsv; Type: TABLE DATA; Schema: public; Owner: qllgvlhmvkcwsw
 --
 
-INSERT INTO public.munsv VALUES (1, 'Ahuachapán', 1);
-INSERT INTO public.munsv VALUES (2, 'Jujutla', 1);
-INSERT INTO public.munsv VALUES (3, 'Atiquizaya', 1);
-INSERT INTO public.munsv VALUES (4, 'Concepción de Ataco', 1);
-INSERT INTO public.munsv VALUES (5, 'El Refugio', 1);
-INSERT INTO public.munsv VALUES (6, 'Guaymango', 1);
-INSERT INTO public.munsv VALUES (7, 'Apaneca', 1);
-INSERT INTO public.munsv VALUES (8, 'San Francisco Menéndez', 1);
-INSERT INTO public.munsv VALUES (9, 'San Lorenzo', 1);
-INSERT INTO public.munsv VALUES (10, 'San Pedro Puxtla', 1);
-INSERT INTO public.munsv VALUES (11, 'Tacuba', 1);
-INSERT INTO public.munsv VALUES (12, 'Turín', 1);
-INSERT INTO public.munsv VALUES (13, 'Candelaria de la Frontera', 2);
-INSERT INTO public.munsv VALUES (14, 'Chalchuapa', 2);
-INSERT INTO public.munsv VALUES (15, 'Coatepeque', 2);
-INSERT INTO public.munsv VALUES (16, 'El Congo', 2);
-INSERT INTO public.munsv VALUES (17, 'El Porvenir', 2);
-INSERT INTO public.munsv VALUES (18, 'Masahuat', 2);
-INSERT INTO public.munsv VALUES (19, 'Metapán', 2);
-INSERT INTO public.munsv VALUES (20, 'San Antonio Pajonal', 2);
-INSERT INTO public.munsv VALUES (21, 'San Sebastián Salitrillo', 2);
-INSERT INTO public.munsv VALUES (22, 'Santa Ana', 2);
-INSERT INTO public.munsv VALUES (23, 'Santa Rosa Guachipilín', 2);
-INSERT INTO public.munsv VALUES (24, 'Santiago de la Frontera', 2);
-INSERT INTO public.munsv VALUES (25, 'Texistepeque', 2);
-INSERT INTO public.munsv VALUES (26, 'Acajutla', 3);
-INSERT INTO public.munsv VALUES (27, 'Armenia', 3);
-INSERT INTO public.munsv VALUES (28, 'Caluco', 3);
-INSERT INTO public.munsv VALUES (29, 'Cuisnahuat', 3);
-INSERT INTO public.munsv VALUES (30, 'Izalco', 3);
-INSERT INTO public.munsv VALUES (31, 'Juayúa', 3);
-INSERT INTO public.munsv VALUES (32, 'Nahuizalco', 3);
-INSERT INTO public.munsv VALUES (33, 'Nahulingo', 3);
-INSERT INTO public.munsv VALUES (34, 'Salcoatitán', 3);
-INSERT INTO public.munsv VALUES (35, 'San Antonio del Monte', 3);
-INSERT INTO public.munsv VALUES (36, 'San Julián', 3);
-INSERT INTO public.munsv VALUES (37, 'Santa Catarina Masahuat', 3);
-INSERT INTO public.munsv VALUES (38, 'Santa Isabel Ishuatán', 3);
-INSERT INTO public.munsv VALUES (39, 'Santo Domingo de Guzmán', 3);
-INSERT INTO public.munsv VALUES (40, 'Sonsonate', 3);
-INSERT INTO public.munsv VALUES (41, 'Sonzacate', 3);
-INSERT INTO public.munsv VALUES (42, 'Alegría', 11);
-INSERT INTO public.munsv VALUES (43, 'Berlín', 11);
-INSERT INTO public.munsv VALUES (44, 'California', 11);
-INSERT INTO public.munsv VALUES (45, 'Concepción Batres', 11);
-INSERT INTO public.munsv VALUES (46, 'El Triunfo', 11);
-INSERT INTO public.munsv VALUES (47, 'Ereguayquín', 11);
-INSERT INTO public.munsv VALUES (48, 'Estanzuelas', 11);
-INSERT INTO public.munsv VALUES (49, 'Jiquilisco', 11);
-INSERT INTO public.munsv VALUES (50, 'Jucuapa', 11);
-INSERT INTO public.munsv VALUES (51, 'Jucuarán', 11);
-INSERT INTO public.munsv VALUES (52, 'Mercedes Umaña', 11);
-INSERT INTO public.munsv VALUES (53, 'Nueva Granada', 11);
-INSERT INTO public.munsv VALUES (54, 'Ozatlán', 11);
-INSERT INTO public.munsv VALUES (55, 'Puerto El Triunfo', 11);
-INSERT INTO public.munsv VALUES (56, 'San Agustín', 11);
-INSERT INTO public.munsv VALUES (57, 'San Buenaventura', 11);
-INSERT INTO public.munsv VALUES (58, 'San Dionisio', 11);
-INSERT INTO public.munsv VALUES (59, 'San Francisco Javier', 11);
-INSERT INTO public.munsv VALUES (60, 'Santa Elena', 11);
-INSERT INTO public.munsv VALUES (61, 'Santa María', 11);
-INSERT INTO public.munsv VALUES (62, 'Santiago de María', 11);
-INSERT INTO public.munsv VALUES (63, 'Tecapán', 11);
-INSERT INTO public.munsv VALUES (64, 'Usulután', 11);
-INSERT INTO public.munsv VALUES (65, 'Carolina', 13);
-INSERT INTO public.munsv VALUES (66, 'Chapeltique', 13);
-INSERT INTO public.munsv VALUES (67, 'Chinameca', 13);
-INSERT INTO public.munsv VALUES (68, 'Chirilagua', 13);
-INSERT INTO public.munsv VALUES (69, 'Ciudad Barrios', 13);
-INSERT INTO public.munsv VALUES (70, 'Comacarán', 13);
-INSERT INTO public.munsv VALUES (71, 'El Tránsito', 13);
-INSERT INTO public.munsv VALUES (72, 'Lolotique', 13);
-INSERT INTO public.munsv VALUES (73, 'Moncagua', 13);
-INSERT INTO public.munsv VALUES (74, 'Nueva Guadalupe', 13);
-INSERT INTO public.munsv VALUES (75, 'Nuevo Edén de San Juan', 13);
-INSERT INTO public.munsv VALUES (76, 'Quelepa', 13);
-INSERT INTO public.munsv VALUES (77, 'San Antonio del Mosco', 13);
-INSERT INTO public.munsv VALUES (78, 'San Gerardo', 13);
-INSERT INTO public.munsv VALUES (79, 'San Jorge', 13);
-INSERT INTO public.munsv VALUES (80, 'San Luis de la Reina', 13);
-INSERT INTO public.munsv VALUES (81, 'San Miguel', 13);
-INSERT INTO public.munsv VALUES (82, 'San Rafael Oriente', 13);
-INSERT INTO public.munsv VALUES (83, 'Sesori', 13);
-INSERT INTO public.munsv VALUES (84, 'Uluazapa', 13);
-INSERT INTO public.munsv VALUES (85, 'Arambala', 12);
-INSERT INTO public.munsv VALUES (86, 'Cacaopera', 12);
-INSERT INTO public.munsv VALUES (87, 'Chilanga', 12);
-INSERT INTO public.munsv VALUES (88, 'Corinto', 12);
-INSERT INTO public.munsv VALUES (89, 'Delicias de Concepción', 12);
-INSERT INTO public.munsv VALUES (90, 'El Divisadero', 12);
-INSERT INTO public.munsv VALUES (91, 'El Rosario (Morazán)', 12);
-INSERT INTO public.munsv VALUES (92, 'Gualococti', 12);
-INSERT INTO public.munsv VALUES (93, 'Guatajiagua', 12);
-INSERT INTO public.munsv VALUES (94, 'Joateca', 12);
-INSERT INTO public.munsv VALUES (95, 'Jocoaitique', 12);
-INSERT INTO public.munsv VALUES (96, 'Jocoro', 12);
-INSERT INTO public.munsv VALUES (97, 'Lolotiquillo', 12);
-INSERT INTO public.munsv VALUES (98, 'Meanguera', 12);
-INSERT INTO public.munsv VALUES (99, 'Osicala', 12);
-INSERT INTO public.munsv VALUES (100, 'Perquín', 12);
-INSERT INTO public.munsv VALUES (101, 'San Carlos', 12);
-INSERT INTO public.munsv VALUES (102, 'San Fernando (Morazán)', 12);
-INSERT INTO public.munsv VALUES (103, 'San Francisco Gotera', 12);
-INSERT INTO public.munsv VALUES (104, 'San Isidro (Morazán)', 12);
-INSERT INTO public.munsv VALUES (105, 'San Simón', 12);
-INSERT INTO public.munsv VALUES (106, 'Sensembra', 12);
-INSERT INTO public.munsv VALUES (107, 'Sociedad', 12);
-INSERT INTO public.munsv VALUES (108, 'Torola', 12);
-INSERT INTO public.munsv VALUES (109, 'Yamabal', 12);
-INSERT INTO public.munsv VALUES (110, 'Yoloaiquín', 12);
-INSERT INTO public.munsv VALUES (111, 'La Unión', 14);
-INSERT INTO public.munsv VALUES (112, 'San Alejo', 14);
-INSERT INTO public.munsv VALUES (113, 'Yucuaiquín', 14);
-INSERT INTO public.munsv VALUES (114, 'Conchagua', 14);
-INSERT INTO public.munsv VALUES (115, 'Intipucá', 14);
-INSERT INTO public.munsv VALUES (116, 'San José', 14);
-INSERT INTO public.munsv VALUES (117, 'El Carmen (La Unión)', 14);
-INSERT INTO public.munsv VALUES (118, 'Yayantique', 14);
-INSERT INTO public.munsv VALUES (119, 'Bolívar', 14);
-INSERT INTO public.munsv VALUES (120, 'Meanguera del Golfo', 14);
-INSERT INTO public.munsv VALUES (121, 'Santa Rosa de Lima', 14);
-INSERT INTO public.munsv VALUES (122, 'Pasaquina', 14);
-INSERT INTO public.munsv VALUES (123, 'Anamoros', 14);
-INSERT INTO public.munsv VALUES (124, 'Nueva Esparta', 14);
-INSERT INTO public.munsv VALUES (125, 'El Sauce', 14);
-INSERT INTO public.munsv VALUES (126, 'Concepción de Oriente', 14);
-INSERT INTO public.munsv VALUES (127, 'Polorós', 14);
-INSERT INTO public.munsv VALUES (128, 'Lislique', 14);
-INSERT INTO public.munsv VALUES (129, 'Antiguo Cuscatlán', 4);
-INSERT INTO public.munsv VALUES (130, 'Chiltiupán', 4);
-INSERT INTO public.munsv VALUES (131, 'Ciudad Arce', 4);
-INSERT INTO public.munsv VALUES (132, 'Colón', 4);
-INSERT INTO public.munsv VALUES (133, 'Comasagua', 4);
-INSERT INTO public.munsv VALUES (134, 'Huizúcar', 4);
-INSERT INTO public.munsv VALUES (135, 'Jayaque', 4);
-INSERT INTO public.munsv VALUES (136, 'Jicalapa', 4);
-INSERT INTO public.munsv VALUES (137, 'La Libertad', 4);
-INSERT INTO public.munsv VALUES (138, 'Santa Tecla', 4);
-INSERT INTO public.munsv VALUES (139, 'Nuevo Cuscatlán', 4);
-INSERT INTO public.munsv VALUES (140, 'San Juan Opico', 4);
-INSERT INTO public.munsv VALUES (141, 'Quezaltepeque', 4);
-INSERT INTO public.munsv VALUES (142, 'Sacacoyo', 4);
-INSERT INTO public.munsv VALUES (143, 'San José Villanueva', 4);
-INSERT INTO public.munsv VALUES (144, 'San Matías', 4);
-INSERT INTO public.munsv VALUES (145, 'San Pablo Tacachico', 4);
-INSERT INTO public.munsv VALUES (146, 'Talnique', 4);
-INSERT INTO public.munsv VALUES (147, 'Tamanique', 4);
-INSERT INTO public.munsv VALUES (148, 'Teotepeque', 4);
-INSERT INTO public.munsv VALUES (149, 'Tepecoyo', 4);
-INSERT INTO public.munsv VALUES (150, 'Zaragoza', 4);
-INSERT INTO public.munsv VALUES (151, 'Agua Caliente', 5);
-INSERT INTO public.munsv VALUES (152, 'Arcatao', 5);
-INSERT INTO public.munsv VALUES (153, 'Azacualpa', 5);
-INSERT INTO public.munsv VALUES (154, 'Cancasque', 5);
-INSERT INTO public.munsv VALUES (155, 'Chalatenango', 5);
-INSERT INTO public.munsv VALUES (156, 'Citalá', 5);
-INSERT INTO public.munsv VALUES (157, 'Comapala', 5);
-INSERT INTO public.munsv VALUES (158, 'Concepción Quezaltepeque', 5);
-INSERT INTO public.munsv VALUES (159, 'Dulce Nombre de María', 5);
-INSERT INTO public.munsv VALUES (160, 'El Carrizal', 5);
-INSERT INTO public.munsv VALUES (161, 'El Paraíso', 5);
-INSERT INTO public.munsv VALUES (162, 'La Laguna', 5);
-INSERT INTO public.munsv VALUES (163, 'La Palma', 5);
-INSERT INTO public.munsv VALUES (164, 'La Reina', 5);
-INSERT INTO public.munsv VALUES (165, 'Las Vueltas', 5);
-INSERT INTO public.munsv VALUES (166, 'Nueva Concepción', 5);
-INSERT INTO public.munsv VALUES (167, 'Nueva Trinidad', 5);
-INSERT INTO public.munsv VALUES (168, 'Nombre de Jesús', 5);
-INSERT INTO public.munsv VALUES (169, 'Ojos de Agua', 5);
-INSERT INTO public.munsv VALUES (170, 'Potonico', 5);
-INSERT INTO public.munsv VALUES (171, 'San Antonio de la Cruz', 5);
-INSERT INTO public.munsv VALUES (172, 'San Antonio Los Ranchos', 5);
-INSERT INTO public.munsv VALUES (173, 'San Fernando (Chalatenango)', 5);
-INSERT INTO public.munsv VALUES (174, 'San Francisco Lempa', 5);
-INSERT INTO public.munsv VALUES (175, 'San Francisco Morazán', 5);
-INSERT INTO public.munsv VALUES (176, 'San Ignacio', 5);
-INSERT INTO public.munsv VALUES (177, 'San Isidro Labrador', 5);
-INSERT INTO public.munsv VALUES (178, 'Las Flores', 5);
-INSERT INTO public.munsv VALUES (179, 'San Luis del Carmen', 5);
-INSERT INTO public.munsv VALUES (180, 'San Miguel de Mercedes', 5);
-INSERT INTO public.munsv VALUES (181, 'San Rafael', 5);
-INSERT INTO public.munsv VALUES (182, 'Santa Rita', 5);
-INSERT INTO public.munsv VALUES (183, 'Tejutla', 5);
-INSERT INTO public.munsv VALUES (184, 'Cojutepeque', 7);
-INSERT INTO public.munsv VALUES (185, 'Candelaria', 7);
-INSERT INTO public.munsv VALUES (186, 'El Carmen (Cuscatlán)', 7);
-INSERT INTO public.munsv VALUES (187, 'El Rosario (Cuscatlán)', 7);
-INSERT INTO public.munsv VALUES (188, 'Monte San Juan', 7);
-INSERT INTO public.munsv VALUES (189, 'Oratorio de Concepción', 7);
-INSERT INTO public.munsv VALUES (190, 'San Bartolomé Perulapía', 7);
-INSERT INTO public.munsv VALUES (191, 'San Cristóbal', 7);
-INSERT INTO public.munsv VALUES (192, 'San José Guayabal', 7);
-INSERT INTO public.munsv VALUES (193, 'San Pedro Perulapán', 7);
-INSERT INTO public.munsv VALUES (194, 'San Rafael Cedros', 7);
-INSERT INTO public.munsv VALUES (195, 'San Ramón', 7);
-INSERT INTO public.munsv VALUES (196, 'Santa Cruz Analquito', 7);
-INSERT INTO public.munsv VALUES (197, 'Santa Cruz Michapa', 7);
-INSERT INTO public.munsv VALUES (198, 'Suchitoto', 7);
-INSERT INTO public.munsv VALUES (199, 'Tenancingo', 7);
-INSERT INTO public.munsv VALUES (200, 'Aguilares', 6);
-INSERT INTO public.munsv VALUES (201, 'Apopa', 6);
-INSERT INTO public.munsv VALUES (202, 'Ayutuxtepeque', 6);
-INSERT INTO public.munsv VALUES (203, 'Cuscatancingo', 6);
-INSERT INTO public.munsv VALUES (204, 'Ciudad Delgado', 6);
-INSERT INTO public.munsv VALUES (205, 'El Paisnal', 6);
-INSERT INTO public.munsv VALUES (206, 'Guazapa', 6);
-INSERT INTO public.munsv VALUES (207, 'Ilopango', 6);
-INSERT INTO public.munsv VALUES (208, 'Mejicanos', 6);
-INSERT INTO public.munsv VALUES (209, 'Nejapa', 6);
-INSERT INTO public.munsv VALUES (210, 'Panchimalco', 6);
-INSERT INTO public.munsv VALUES (211, 'Rosario de Mora', 6);
-INSERT INTO public.munsv VALUES (212, 'San Marcos', 6);
-INSERT INTO public.munsv VALUES (213, 'San Martín', 6);
-INSERT INTO public.munsv VALUES (214, 'San Salvador', 6);
-INSERT INTO public.munsv VALUES (215, 'Santiago Texacuangos', 6);
-INSERT INTO public.munsv VALUES (216, 'Santo Tomás', 6);
-INSERT INTO public.munsv VALUES (217, 'Soyapango', 6);
-INSERT INTO public.munsv VALUES (218, 'Tonacatepeque', 6);
-INSERT INTO public.munsv VALUES (219, 'Zacatecoluca', 8);
-INSERT INTO public.munsv VALUES (220, 'Cuyultitán', 8);
-INSERT INTO public.munsv VALUES (221, 'El Rosario (La Paz)', 8);
-INSERT INTO public.munsv VALUES (222, 'Jerusalén', 8);
-INSERT INTO public.munsv VALUES (223, 'Mercedes La Ceiba', 8);
-INSERT INTO public.munsv VALUES (224, 'Olocuilta', 8);
-INSERT INTO public.munsv VALUES (225, 'Paraíso de Osorio', 8);
-INSERT INTO public.munsv VALUES (226, 'San Antonio Masahuat', 8);
-INSERT INTO public.munsv VALUES (227, 'San Emigdio', 8);
-INSERT INTO public.munsv VALUES (228, 'San Francisco Chinameca', 8);
-INSERT INTO public.munsv VALUES (229, 'San Pedro Masahuat', 8);
-INSERT INTO public.munsv VALUES (230, 'San Juan Nonualco', 8);
-INSERT INTO public.munsv VALUES (231, 'San Juan Talpa', 8);
-INSERT INTO public.munsv VALUES (232, 'San Juan Tepezontes', 8);
-INSERT INTO public.munsv VALUES (233, 'San Luis La Herradura', 8);
-INSERT INTO public.munsv VALUES (234, 'San Luis Talpa', 8);
-INSERT INTO public.munsv VALUES (235, 'San Miguel Tepezontes', 8);
-INSERT INTO public.munsv VALUES (236, 'San Pedro Nonualco', 8);
-INSERT INTO public.munsv VALUES (237, 'San Rafael Obrajuelo', 8);
-INSERT INTO public.munsv VALUES (238, 'Santa María Ostuma', 8);
-INSERT INTO public.munsv VALUES (239, 'Santiago Nonualco', 8);
-INSERT INTO public.munsv VALUES (240, 'Tapalhuaca', 8);
-INSERT INTO public.munsv VALUES (241, 'Cinquera', 9);
-INSERT INTO public.munsv VALUES (242, 'Dolores', 9);
-INSERT INTO public.munsv VALUES (243, 'Guacotecti', 9);
-INSERT INTO public.munsv VALUES (244, 'Ilobasco', 9);
-INSERT INTO public.munsv VALUES (245, 'Jutiapa', 9);
-INSERT INTO public.munsv VALUES (246, 'San Isidro (Cabañas)', 9);
-INSERT INTO public.munsv VALUES (247, 'Sensuntepeque', 9);
-INSERT INTO public.munsv VALUES (248, 'Tejutepeque', 9);
-INSERT INTO public.munsv VALUES (249, 'Victoria', 9);
-INSERT INTO public.munsv VALUES (250, 'Apastepeque', 10);
-INSERT INTO public.munsv VALUES (251, 'Guadalupe', 10);
-INSERT INTO public.munsv VALUES (252, 'San Cayetano Istepeque', 10);
-INSERT INTO public.munsv VALUES (253, 'San Esteban Catarina', 10);
-INSERT INTO public.munsv VALUES (254, 'San Ildefonso', 10);
-INSERT INTO public.munsv VALUES (255, 'San Lorenzo', 10);
-INSERT INTO public.munsv VALUES (256, 'San Sebastián', 10);
-INSERT INTO public.munsv VALUES (257, 'San Vicente', 10);
-INSERT INTO public.munsv VALUES (258, 'Santa Clara', 10);
-INSERT INTO public.munsv VALUES (259, 'Santo Domingo', 10);
-INSERT INTO public.munsv VALUES (260, 'Tecoluca', 10);
-INSERT INTO public.munsv VALUES (261, 'Tepetitán', 10);
-INSERT INTO public.munsv VALUES (262, 'Verapaz', 10);
+INSERT INTO public.munsv
+VALUES (1, 'Ahuachapán', 1),
+       (2, 'Jujutla', 1),
+       (3, 'Atiquizaya', 1),
+       (4, 'Concepción de Ataco', 1),
+       (5, 'El Refugio', 1),
+       (6, 'Guaymango', 1),
+       (7, 'Apaneca', 1),
+       (8, 'San Francisco Menéndez', 1),
+       (9, 'San Lorenzo', 1),
+       (10, 'San Pedro Puxtla', 1),
+       (11, 'Tacuba', 1),
+       (12, 'Turín', 1),
+       (13, 'Candelaria de la Frontera', 2),
+       (14, 'Chalchuapa', 2),
+       (15, 'Coatepeque', 2),
+       (16, 'El Congo', 2),
+       (17, 'El Porvenir', 2),
+       (18, 'Masahuat', 2),
+       (19, 'Metapán', 2),
+       (20, 'San Antonio Pajonal', 2),
+       (21, 'San Sebastián Salitrillo', 2),
+       (22, 'Santa Ana', 2),
+       (23, 'Santa Rosa Guachipilín', 2),
+       (24, 'Santiago de la Frontera', 2),
+       (25, 'Texistepeque', 2),
+       (26, 'Acajutla', 3),
+       (27, 'Armenia', 3),
+       (28, 'Caluco', 3),
+       (29, 'Cuisnahuat', 3),
+       (30, 'Izalco', 3),
+       (31, 'Juayúa', 3),
+       (32, 'Nahuizalco', 3),
+       (33, 'Nahulingo', 3),
+       (34, 'Salcoatitán', 3),
+       (35, 'San Antonio del Monte', 3),
+       (36, 'San Julián', 3),
+       (37, 'Santa Catarina Masahuat', 3),
+       (38, 'Santa Isabel Ishuatán', 3),
+       (39, 'Santo Domingo de Guzmán', 3),
+       (40, 'Sonsonate', 3),
+       (41, 'Sonzacate', 3),
+       (42, 'Alegría', 11),
+       (43, 'Berlín', 11),
+       (44, 'California', 11),
+       (45, 'Concepción Batres', 11),
+       (46, 'El Triunfo', 11),
+       (47, 'Ereguayquín', 11),
+       (48, 'Estanzuelas', 11),
+       (49, 'Jiquilisco', 11),
+       (50, 'Jucuapa', 11),
+       (51, 'Jucuarán', 11),
+       (52, 'Mercedes Umaña', 11),
+       (53, 'Nueva Granada', 11),
+       (54, 'Ozatlán', 11),
+       (55, 'Puerto El Triunfo', 11),
+       (56, 'San Agustín', 11),
+       (57, 'San Buenaventura', 11),
+       (58, 'San Dionisio', 11),
+       (59, 'San Francisco Javier', 11),
+       (60, 'Santa Elena', 11),
+       (61, 'Santa María', 11),
+       (62, 'Santiago de María', 11),
+       (63, 'Tecapán', 11),
+       (64, 'Usulután', 11),
+       (65, 'Carolina', 13),
+       (66, 'Chapeltique', 13),
+       (67, 'Chinameca', 13),
+       (68, 'Chirilagua', 13),
+       (69, 'Ciudad Barrios', 13),
+       (70, 'Comacarán', 13),
+       (71, 'El Tránsito', 13),
+       (72, 'Lolotique', 13),
+       (73, 'Moncagua', 13),
+       (74, 'Nueva Guadalupe', 13),
+       (75, 'Nuevo Edén de San Juan', 13),
+       (76, 'Quelepa', 13),
+       (77, 'San Antonio del Mosco', 13),
+       (78, 'San Gerardo', 13),
+       (79, 'San Jorge', 13),
+       (80, 'San Luis de la Reina', 13),
+       (81, 'San Miguel', 13),
+       (82, 'San Rafael Oriente', 13),
+       (83, 'Sesori', 13),
+       (84, 'Uluazapa', 13),
+       (85, 'Arambala', 12),
+       (86, 'Cacaopera', 12),
+       (87, 'Chilanga', 12),
+       (88, 'Corinto', 12),
+       (89, 'Delicias de Concepción', 12),
+       (90, 'El Divisadero', 12),
+       (91, 'El Rosario (Morazán)', 12),
+       (92, 'Gualococti', 12),
+       (93, 'Guatajiagua', 12),
+       (94, 'Joateca', 12),
+       (95, 'Jocoaitique', 12),
+       (96, 'Jocoro', 12),
+       (97, 'Lolotiquillo', 12),
+       (98, 'Meanguera', 12),
+       (99, 'Osicala', 12),
+       (100, 'Perquín', 12),
+       (101, 'San Carlos', 12),
+       (102, 'San Fernando (Morazán)', 12),
+       (103, 'San Francisco Gotera', 12),
+       (104, 'San Isidro (Morazán)', 12),
+       (105, 'San Simón', 12),
+       (106, 'Sensembra', 12),
+       (107, 'Sociedad', 12),
+       (108, 'Torola', 12),
+       (109, 'Yamabal', 12),
+       (110, 'Yoloaiquín', 12),
+       (111, 'La Unión', 14),
+       (112, 'San Alejo', 14),
+       (113, 'Yucuaiquín', 14),
+       (114, 'Conchagua', 14),
+       (115, 'Intipucá', 14),
+       (116, 'San José', 14),
+       (117, 'El Carmen (La Unión)', 14),
+       (118, 'Yayantique', 14),
+       (119, 'Bolívar', 14),
+       (120, 'Meanguera del Golfo', 14),
+       (121, 'Santa Rosa de Lima', 14),
+       (122, 'Pasaquina', 14),
+       (123, 'Anamoros', 14),
+       (124, 'Nueva Esparta', 14),
+       (125, 'El Sauce', 14),
+       (126, 'Concepción de Oriente', 14),
+       (127, 'Polorós', 14),
+       (128, 'Lislique', 14),
+       (129, 'Antiguo Cuscatlán', 4),
+       (130, 'Chiltiupán', 4),
+       (131, 'Ciudad Arce', 4),
+       (132, 'Colón', 4),
+       (133, 'Comasagua', 4),
+       (134, 'Huizúcar', 4),
+       (135, 'Jayaque', 4),
+       (136, 'Jicalapa', 4),
+       (137, 'La Libertad', 4),
+       (138, 'Santa Tecla', 4),
+       (139, 'Nuevo Cuscatlán', 4),
+       (140, 'San Juan Opico', 4),
+       (141, 'Quezaltepeque', 4),
+       (142, 'Sacacoyo', 4),
+       (143, 'San José Villanueva', 4),
+       (144, 'San Matías', 4),
+       (145, 'San Pablo Tacachico', 4),
+       (146, 'Talnique', 4),
+       (147, 'Tamanique', 4),
+       (148, 'Teotepeque', 4),
+       (149, 'Tepecoyo', 4),
+       (150, 'Zaragoza', 4),
+       (151, 'Agua Caliente', 5),
+       (152, 'Arcatao', 5),
+       (153, 'Azacualpa', 5),
+       (154, 'Cancasque', 5),
+       (155, 'Chalatenango', 5),
+       (156, 'Citalá', 5),
+       (157, 'Comapala', 5),
+       (158, 'Concepción Quezaltepeque', 5),
+       (159, 'Dulce Nombre de María', 5),
+       (160, 'El Carrizal', 5),
+       (161, 'El Paraíso', 5),
+       (162, 'La Laguna', 5),
+       (163, 'La Palma', 5),
+       (164, 'La Reina', 5),
+       (165, 'Las Vueltas', 5),
+       (166, 'Nueva Concepción', 5),
+       (167, 'Nueva Trinidad', 5),
+       (168, 'Nombre de Jesús', 5),
+       (169, 'Ojos de Agua', 5),
+       (170, 'Potonico', 5),
+       (171, 'San Antonio de la Cruz', 5),
+       (172, 'San Antonio Los Ranchos', 5),
+       (173, 'San Fernando (Chalatenango)', 5),
+       (174, 'San Francisco Lempa', 5),
+       (175, 'San Francisco Morazán', 5),
+       (176, 'San Ignacio', 5),
+       (177, 'San Isidro Labrador', 5),
+       (178, 'Las Flores', 5),
+       (179, 'San Luis del Carmen', 5),
+       (180, 'San Miguel de Mercedes', 5),
+       (181, 'San Rafael', 5),
+       (182, 'Santa Rita', 5),
+       (183, 'Tejutla', 5),
+       (184, 'Cojutepeque', 7),
+       (185, 'Candelaria', 7),
+       (186, 'El Carmen (Cuscatlán)', 7),
+       (187, 'El Rosario (Cuscatlán)', 7),
+       (188, 'Monte San Juan', 7),
+       (189, 'Oratorio de Concepción', 7),
+       (190, 'San Bartolomé Perulapía', 7),
+       (191, 'San Cristóbal', 7),
+       (192, 'San José Guayabal', 7),
+       (193, 'San Pedro Perulapán', 7),
+       (194, 'San Rafael Cedros', 7),
+       (195, 'San Ramón', 7),
+       (196, 'Santa Cruz Analquito', 7),
+       (197, 'Santa Cruz Michapa', 7),
+       (198, 'Suchitoto', 7),
+       (199, 'Tenancingo', 7),
+       (200, 'Aguilares', 6),
+       (201, 'Apopa', 6),
+       (202, 'Ayutuxtepeque', 6),
+       (203, 'Cuscatancingo', 6),
+       (204, 'Ciudad Delgado', 6),
+       (205, 'El Paisnal', 6),
+       (206, 'Guazapa', 6),
+       (207, 'Ilopango', 6),
+       (208, 'Mejicanos', 6),
+       (209, 'Nejapa', 6),
+       (210, 'Panchimalco', 6),
+       (211, 'Rosario de Mora', 6),
+       (212, 'San Marcos', 6),
+       (213, 'San Martín', 6),
+       (214, 'San Salvador', 6),
+       (215, 'Santiago Texacuangos', 6),
+       (216, 'Santo Tomás', 6),
+       (217, 'Soyapango', 6),
+       (218, 'Tonacatepeque', 6),
+       (219, 'Zacatecoluca', 8),
+       (220, 'Cuyultitán', 8),
+       (221, 'El Rosario (La Paz)', 8),
+       (222, 'Jerusalén', 8),
+       (223, 'Mercedes La Ceiba', 8),
+       (224, 'Olocuilta', 8),
+       (225, 'Paraíso de Osorio', 8),
+       (226, 'San Antonio Masahuat', 8),
+       (227, 'San Emigdio', 8),
+       (228, 'San Francisco Chinameca', 8),
+       (229, 'San Pedro Masahuat', 8),
+       (230, 'San Juan Nonualco', 8),
+       (231, 'San Juan Talpa', 8),
+       (232, 'San Juan Tepezontes', 8),
+       (233, 'San Luis La Herradura', 8),
+       (234, 'San Luis Talpa', 8),
+       (235, 'San Miguel Tepezontes', 8),
+       (236, 'San Pedro Nonualco', 8),
+       (237, 'San Rafael Obrajuelo', 8),
+       (238, 'Santa María Ostuma', 8),
+       (239, 'Santiago Nonualco', 8),
+       (240, 'Tapalhuaca', 8),
+       (241, 'Cinquera', 9),
+       (242, 'Dolores', 9),
+       (243, 'Guacotecti', 9),
+       (244, 'Ilobasco', 9),
+       (245, 'Jutiapa', 9),
+       (246, 'San Isidro (Cabañas)', 9),
+       (247, 'Sensuntepeque', 9),
+       (248, 'Tejutepeque', 9),
+       (249, 'Victoria', 9),
+       (250, 'Apastepeque', 10),
+       (251, 'Guadalupe', 10),
+       (252, 'San Cayetano Istepeque', 10),
+       (253, 'San Esteban Catarina', 10),
+       (254, 'San Ildefonso', 10),
+       (255, 'San Lorenzo', 10),
+       (256, 'San Sebastián', 10),
+       (257, 'San Vicente', 10),
+       (258, 'Santa Clara', 10),
+       (259, 'Santo Domingo', 10),
+       (260, 'Tecoluca', 10),
+       (261, 'Tepetitán', 10),
+       (262, 'Verapaz', 10);
 
 
 --
@@ -628,10 +626,11 @@ INSERT INTO public.munsv VALUES (262, 'Verapaz', 10);
 -- Data for Name: zonesv; Type: TABLE DATA; Schema: public; Owner: qllgvlhmvkcwsw
 --
 
-INSERT INTO public.zonesv VALUES (1, 'Occidental');
-INSERT INTO public.zonesv VALUES (2, 'Central');
-INSERT INTO public.zonesv VALUES (3, 'Paracentral');
-INSERT INTO public.zonesv VALUES (4, 'Oriental');
+INSERT INTO public.zonesv
+VALUES (1, 'Occidental'),
+       (2, 'Central'),
+       (3, 'Paracentral'),
+       (4, 'Oriental');
 
 
 --
