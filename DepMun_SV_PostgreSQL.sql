@@ -1,48 +1,27 @@
---
--- PostgreSQL database dump
---
+-- Ejecutar primero la creación de la base de datos de manera individual
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
+-- -----------------------------------------------------
+-- Database el_salvador
+-- -----------------------------------------------------
 DROP DATABASE IF EXISTS el_salvador;
 
-CREATE DATABASE el_salvador ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
+CREATE DATABASE el_salvador with TEMPLATE 'template0' ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
 
-ALTER DATABASE el_salvador SET search_path TO '$user', 'public', 'heroku_ext';
+-- A partir de aca, se puede ejecutar el script completo
 
-SET statement_timeout = 0;
+-- -----------------------------------------------------
+-- Table el_salvador.public.depsv
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS public.depsv;
 
-CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO postgres;
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
-
-SET default_tablespace = '';
-
-SET default_table_access_method = heap;
-
-
-CREATE TABLE public.depsv (
-    id integer NOT NULL,
-    depname character varying(30) NOT NULL,
-    isocode character(5) NOT NULL,
-    zonesv_id integer NOT NULL
+CREATE TABLE public.depsv
+(
+    id        integer               NOT NULL,
+    depname   character varying(30) NOT NULL,
+    isocode   character(5)          NOT NULL,
+    zonesv_id integer               NOT NULL
 );
 
-
-ALTER TABLE public.depsv OWNER TO postgres;
 
 CREATE SEQUENCE public.depsv_id_seq
     AS integer
@@ -52,19 +31,20 @@ CREATE SEQUENCE public.depsv_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.depsv_id_seq OWNER TO postgres;
-
 ALTER SEQUENCE public.depsv_id_seq OWNED BY public.depsv.id;
 
-CREATE TABLE public.munsv (
-    id integer NOT NULL,
-    munname character varying(100) NOT NULL,
-    depsv_id integer NOT NULL
+-- -----------------------------------------------------
+-- Table el_salvador.public.munsv
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS public.munsv;
+
+CREATE TABLE public.munsv
+(
+    id       integer                NOT NULL,
+    munname  character varying(100) NOT NULL,
+    depsv_id integer                NOT NULL
 );
 
-
-ALTER TABLE public.munsv OWNER TO postgres;
 
 CREATE SEQUENCE public.munsv_id_seq
     AS integer
@@ -75,17 +55,18 @@ CREATE SEQUENCE public.munsv_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.munsv_id_seq OWNER TO postgres;
-
 ALTER SEQUENCE public.munsv_id_seq OWNED BY public.munsv.id;
 
-CREATE TABLE public.zonesv (
-    id integer NOT NULL,
+-- -----------------------------------------------------
+-- Table el_salvador.public.zonesv
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS public.zonesv;
+
+CREATE TABLE public.zonesv
+(
+    id       integer               NOT NULL,
     zonename character varying(15) NOT NULL
 );
-
-
-ALTER TABLE public.zonesv OWNER TO postgres;
 
 CREATE SEQUENCE public.zonesv_id_seq
     AS integer
@@ -95,16 +76,18 @@ CREATE SEQUENCE public.zonesv_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.zonesv_id_seq OWNER TO postgres;
-
 ALTER SEQUENCE public.zonesv_id_seq OWNED BY public.zonesv.id;
 
-ALTER TABLE ONLY public.depsv ALTER COLUMN id SET DEFAULT nextval('public.depsv_id_seq'::regclass);
+ALTER TABLE ONLY public.depsv
+    ALTER COLUMN id SET DEFAULT nextval('public.depsv_id_seq'::regclass);
 
-ALTER TABLE ONLY public.munsv ALTER COLUMN id SET DEFAULT nextval('public.munsv_id_seq'::regclass);
+ALTER TABLE ONLY public.munsv
+    ALTER COLUMN id SET DEFAULT nextval('public.munsv_id_seq'::regclass);
 
-ALTER TABLE ONLY public.zonesv ALTER COLUMN id SET DEFAULT nextval('public.zonesv_id_seq'::regclass);
+ALTER TABLE ONLY public.zonesv
+    ALTER COLUMN id SET DEFAULT nextval('public.zonesv_id_seq'::regclass);
 
+-- Volcando datos para la tabla el_salvador.depsv: ~14 rows (aproximadamente)
 INSERT INTO public.depsv
 VALUES (1, 'Ahuachapán', 'SV-AH', 1),
        (2, 'Santa Ana', 'SV-SA', 1),
@@ -121,6 +104,7 @@ VALUES (1, 'Ahuachapán', 'SV-AH', 1),
        (13, 'San Miguel', 'SV-SM', 4),
        (14, 'La Unión', 'SV-UN', 4);
 
+-- Volcando datos para la tabla el_salvador.munsv: ~262 rows (aproximadamente)
 INSERT INTO public.munsv
 VALUES (1, 'Ahuachapán', 1),
        (2, 'Jujutla', 1),
@@ -385,6 +369,7 @@ VALUES (1, 'Ahuachapán', 1),
        (261, 'Tepetitán', 10),
        (262, 'Verapaz', 10);
 
+-- Volcando datos para la tabla el_salvador.zonesv: ~4 rows (aproximadamente)
 INSERT INTO public.zonesv
 VALUES (1, 'Occidental'),
        (2, 'Central'),
@@ -411,19 +396,9 @@ CREATE INDEX idx_depsv_id ON public.munsv USING btree (depsv_id);
 CREATE INDEX idx_zonesv_id ON public.depsv USING btree (zonesv_id);
 
 ALTER TABLE ONLY public.depsv
-    ADD CONSTRAINT depsv_ibfk_1 FOREIGN KEY (zonesv_id) REFERENCES public.zonesv(id);
+    ADD CONSTRAINT depsv_ibfk_1 FOREIGN KEY (zonesv_id) REFERENCES public.zonesv (id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE ONLY public.munsv
-    ADD CONSTRAINT munsv_ibfk_1 FOREIGN KEY (depsv_id) REFERENCES public.depsv(id);
+    ADD CONSTRAINT munsv_ibfk_1 FOREIGN KEY (depsv_id) REFERENCES public.depsv (id) ON DELETE CASCADE ON UPDATE CASCADE;
 
-REVOKE CONNECT,TEMPORARY ON DATABASE el_salvador FROM PUBLIC;
-
-REVOKE ALL ON SCHEMA public FROM postgres;
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-GRANT ALL ON LANGUAGE plpgsql TO postgres;
-
---
 -- PostgreSQL database dump complete
---
