@@ -2,11 +2,6 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7 (Ubuntu 14.7-1.pgdg20.04+1)
--- Dumped by pg_dump version 14.7 (Debian 14.7-1.pgdg110+1)
-
--- Started on 2023-04-24 01:34:21 UTC
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -20,7 +15,7 @@ SET row_security = off;
 
 DROP DATABASE IF EXISTS el_salvador;
 
-CREATE DATABASE el_salvador WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
+CREATE DATABASE el_salvador ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -32,43 +27,15 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- TOC entry 4346 (class 0 OID 0)
--- Name: da87s377gkqpv7; Type: DATABASE PROPERTIES; Schema: -; Owner: qllgvlhmvkcwsw
---
 
 ALTER DATABASE el_salvador SET search_path TO '$user', 'public', 'heroku_ext';
 
-
-\connect da87s377gkqpv7
-
 SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- TOC entry 7 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: qllgvlhmvkcwsw
---
 
 CREATE SCHEMA public;
 
 
-ALTER SCHEMA public OWNER TO qllgvlhmvkcwsw;
-
---
--- TOC entry 4347 (class 0 OID 0)
--- Dependencies: 7
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: qllgvlhmvkcwsw
---
+ALTER SCHEMA public OWNER TO postgres;
 
 COMMENT ON SCHEMA public IS 'standard public schema';
 
@@ -77,10 +44,6 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
---
--- TOC entry 214 (class 1259 OID 33002804)
--- Name: depsv; Type: TABLE; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 CREATE TABLE public.depsv (
     id integer NOT NULL,
@@ -92,55 +55,15 @@ CREATE TABLE public.depsv (
 
 ALTER TABLE public.depsv OWNER TO qllgvlhmvkcwsw;
 
---
--- TOC entry 4350 (class 0 OID 0)
--- Dependencies: 214
--- Name: TABLE depsv; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON TABLE public.depsv IS 'TRIAL';
-
-
---
--- TOC entry 4351 (class 0 OID 0)
--- Dependencies: 214
--- Name: COLUMN depsv.id; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 COMMENT ON COLUMN public.depsv.id IS 'TRIAL';
 
-
---
--- TOC entry 4352 (class 0 OID 0)
--- Dependencies: 214
--- Name: COLUMN depsv.depname; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON COLUMN public.depsv.depname IS 'TRIAL';
-
-
---
--- TOC entry 4353 (class 0 OID 0)
--- Dependencies: 214
--- Name: COLUMN depsv.isocode; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 COMMENT ON COLUMN public.depsv.isocode IS 'TRIAL';
 
-
---
--- TOC entry 4354 (class 0 OID 0)
--- Dependencies: 214
--- Name: COLUMN depsv.zonesv_id; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON COLUMN public.depsv.zonesv_id IS 'TRIAL';
-
-
---
--- TOC entry 215 (class 1259 OID 33002807)
--- Name: depsv_id_seq; Type: SEQUENCE; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 CREATE SEQUENCE public.depsv_id_seq
     AS integer
@@ -153,19 +76,7 @@ CREATE SEQUENCE public.depsv_id_seq
 
 ALTER TABLE public.depsv_id_seq OWNER TO qllgvlhmvkcwsw;
 
---
--- TOC entry 4355 (class 0 OID 0)
--- Dependencies: 215
--- Name: depsv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 ALTER SEQUENCE public.depsv_id_seq OWNED BY public.depsv.id;
-
-
---
--- TOC entry 216 (class 1259 OID 33002808)
--- Name: munsv; Type: TABLE; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 CREATE TABLE public.munsv (
     id integer NOT NULL,
@@ -176,46 +87,13 @@ CREATE TABLE public.munsv (
 
 ALTER TABLE public.munsv OWNER TO qllgvlhmvkcwsw;
 
---
--- TOC entry 4356 (class 0 OID 0)
--- Dependencies: 216
--- Name: TABLE munsv; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON TABLE public.munsv IS 'TRIAL';
-
-
---
--- TOC entry 4357 (class 0 OID 0)
--- Dependencies: 216
--- Name: COLUMN munsv.id; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 COMMENT ON COLUMN public.munsv.id IS 'TRIAL';
 
-
---
--- TOC entry 4358 (class 0 OID 0)
--- Dependencies: 216
--- Name: COLUMN munsv.munname; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON COLUMN public.munsv.munname IS 'TRIAL';
 
-
---
--- TOC entry 4359 (class 0 OID 0)
--- Dependencies: 216
--- Name: COLUMN munsv.depsv_id; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON COLUMN public.munsv.depsv_id IS 'TRIAL';
-
-
---
--- TOC entry 217 (class 1259 OID 33002811)
--- Name: munsv_id_seq; Type: SEQUENCE; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 CREATE SEQUENCE public.munsv_id_seq
     AS integer
@@ -228,19 +106,7 @@ CREATE SEQUENCE public.munsv_id_seq
 
 ALTER TABLE public.munsv_id_seq OWNER TO qllgvlhmvkcwsw;
 
---
--- TOC entry 4360 (class 0 OID 0)
--- Dependencies: 217
--- Name: munsv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 ALTER SEQUENCE public.munsv_id_seq OWNED BY public.munsv.id;
-
-
---
--- TOC entry 218 (class 1259 OID 33002812)
--- Name: zonesv; Type: TABLE; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 CREATE TABLE public.zonesv (
     id integer NOT NULL,
@@ -250,37 +116,11 @@ CREATE TABLE public.zonesv (
 
 ALTER TABLE public.zonesv OWNER TO qllgvlhmvkcwsw;
 
---
--- TOC entry 4361 (class 0 OID 0)
--- Dependencies: 218
--- Name: TABLE zonesv; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON TABLE public.zonesv IS 'TRIAL';
-
-
---
--- TOC entry 4362 (class 0 OID 0)
--- Dependencies: 218
--- Name: COLUMN zonesv.id; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 COMMENT ON COLUMN public.zonesv.id IS 'TRIAL';
 
-
---
--- TOC entry 4363 (class 0 OID 0)
--- Dependencies: 218
--- Name: COLUMN zonesv.zonename; Type: COMMENT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 COMMENT ON COLUMN public.zonesv.zonename IS 'TRIAL';
-
-
---
--- TOC entry 219 (class 1259 OID 33002815)
--- Name: zonesv_id_seq; Type: SEQUENCE; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 CREATE SEQUENCE public.zonesv_id_seq
     AS integer
@@ -290,47 +130,15 @@ CREATE SEQUENCE public.zonesv_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
 ALTER TABLE public.zonesv_id_seq OWNER TO qllgvlhmvkcwsw;
-
---
--- TOC entry 4364 (class 0 OID 0)
--- Dependencies: 219
--- Name: zonesv_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 ALTER SEQUENCE public.zonesv_id_seq OWNED BY public.zonesv.id;
 
-
---
--- TOC entry 4179 (class 2604 OID 33002816)
--- Name: depsv id; Type: DEFAULT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 ALTER TABLE ONLY public.depsv ALTER COLUMN id SET DEFAULT nextval('public.depsv_id_seq'::regclass);
-
-
---
--- TOC entry 4180 (class 2604 OID 33002817)
--- Name: munsv id; Type: DEFAULT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 ALTER TABLE ONLY public.munsv ALTER COLUMN id SET DEFAULT nextval('public.munsv_id_seq'::regclass);
 
-
---
--- TOC entry 4181 (class 2604 OID 33002818)
--- Name: zonesv id; Type: DEFAULT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 ALTER TABLE ONLY public.zonesv ALTER COLUMN id SET DEFAULT nextval('public.zonesv_id_seq'::regclass);
-
-
---
--- TOC entry 4333 (class 0 OID 33002804)
--- Dependencies: 214
--- Data for Name: depsv; Type: TABLE DATA; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 INSERT INTO public.depsv
 VALUES (1, 'Ahuachapán', 'SV-AH', 1),
@@ -347,13 +155,6 @@ VALUES (1, 'Ahuachapán', 'SV-AH', 1),
        (12, 'Morazán', 'SV-MO', 4),
        (13, 'San Miguel', 'SV-SM', 4),
        (14, 'La Unión', 'SV-UN', 4);
-
-
---
--- TOC entry 4335 (class 0 OID 33002808)
--- Dependencies: 216
--- Data for Name: munsv; Type: TABLE DATA; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 INSERT INTO public.munsv
 VALUES (1, 'Ahuachapán', 1),
@@ -619,139 +420,44 @@ VALUES (1, 'Ahuachapán', 1),
        (261, 'Tepetitán', 10),
        (262, 'Verapaz', 10);
 
-
---
--- TOC entry 4337 (class 0 OID 33002812)
--- Dependencies: 218
--- Data for Name: zonesv; Type: TABLE DATA; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 INSERT INTO public.zonesv
 VALUES (1, 'Occidental'),
        (2, 'Central'),
        (3, 'Paracentral'),
        (4, 'Oriental');
 
-
---
--- TOC entry 4365 (class 0 OID 0)
--- Dependencies: 215
--- Name: depsv_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 SELECT pg_catalog.setval('public.depsv_id_seq', 14, true);
-
-
---
--- TOC entry 4366 (class 0 OID 0)
--- Dependencies: 217
--- Name: munsv_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 SELECT pg_catalog.setval('public.munsv_id_seq', 262, true);
 
-
---
--- TOC entry 4367 (class 0 OID 0)
--- Dependencies: 219
--- Name: zonesv_id_seq; Type: SEQUENCE SET; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 SELECT pg_catalog.setval('public.zonesv_id_seq', 4, true);
-
-
---
--- TOC entry 4184 (class 2606 OID 33002820)
--- Name: depsv pk_depsv; Type: CONSTRAINT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 ALTER TABLE ONLY public.depsv
     ADD CONSTRAINT pk_depsv PRIMARY KEY (id);
 
-
---
--- TOC entry 4187 (class 2606 OID 33002822)
--- Name: munsv pk_munsv; Type: CONSTRAINT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 ALTER TABLE ONLY public.munsv
     ADD CONSTRAINT pk_munsv PRIMARY KEY (id, depsv_id);
-
-
---
--- TOC entry 4189 (class 2606 OID 33002824)
--- Name: zonesv pk_zonesv; Type: CONSTRAINT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 ALTER TABLE ONLY public.zonesv
     ADD CONSTRAINT pk_zonesv PRIMARY KEY (id);
 
-
---
--- TOC entry 4185 (class 1259 OID 33002825)
--- Name: idx_depsv_id; Type: INDEX; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 CREATE INDEX idx_depsv_id ON public.munsv USING btree (depsv_id);
 
-
---
--- TOC entry 4182 (class 1259 OID 33002826)
--- Name: idx_zonesv_id; Type: INDEX; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 CREATE INDEX idx_zonesv_id ON public.depsv USING btree (zonesv_id);
-
-
---
--- TOC entry 4190 (class 2606 OID 33002827)
--- Name: depsv depsv_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: qllgvlhmvkcwsw
---
 
 ALTER TABLE ONLY public.depsv
     ADD CONSTRAINT depsv_ibfk_1 FOREIGN KEY (zonesv_id) REFERENCES public.zonesv(id);
 
-
---
--- TOC entry 4191 (class 2606 OID 33002832)
--- Name: munsv munsv_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: qllgvlhmvkcwsw
---
-
 ALTER TABLE ONLY public.munsv
     ADD CONSTRAINT munsv_ibfk_1 FOREIGN KEY (depsv_id) REFERENCES public.depsv(id);
 
-
---
--- TOC entry 4345 (class 0 OID 0)
--- Dependencies: 4344
--- Name: DATABASE da87s377gkqpv7; Type: ACL; Schema: -; Owner: qllgvlhmvkcwsw
---
-
 REVOKE CONNECT,TEMPORARY ON DATABASE el_salvador FROM PUBLIC;
-
-
---
--- TOC entry 4348 (class 0 OID 0)
--- Dependencies: 7
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: qllgvlhmvkcwsw
---
 
 REVOKE ALL ON SCHEMA public FROM postgres;
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO qllgvlhmvkcwsw;
+GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- TOC entry 4349 (class 0 OID 0)
--- Dependencies: 852
--- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
---
-
-GRANT ALL ON LANGUAGE plpgsql TO qllgvlhmvkcwsw;
-
-
--- Completed on 2023-04-24 01:34:32 UTC
+GRANT ALL ON LANGUAGE plpgsql TO postgres;
 
 --
 -- PostgreSQL database dump complete
