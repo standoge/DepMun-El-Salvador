@@ -17,17 +17,6 @@ DROP DATABASE IF EXISTS el_salvador;
 
 CREATE DATABASE el_salvador ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
 
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
 ALTER DATABASE el_salvador SET search_path TO '$user', 'public', 'heroku_ext';
 
 SET statement_timeout = 0;
@@ -53,17 +42,7 @@ CREATE TABLE public.depsv (
 );
 
 
-ALTER TABLE public.depsv OWNER TO qllgvlhmvkcwsw;
-
-COMMENT ON TABLE public.depsv IS 'TRIAL';
-
-COMMENT ON COLUMN public.depsv.id IS 'TRIAL';
-
-COMMENT ON COLUMN public.depsv.depname IS 'TRIAL';
-
-COMMENT ON COLUMN public.depsv.isocode IS 'TRIAL';
-
-COMMENT ON COLUMN public.depsv.zonesv_id IS 'TRIAL';
+ALTER TABLE public.depsv OWNER TO postgres;
 
 CREATE SEQUENCE public.depsv_id_seq
     AS integer
@@ -74,7 +53,7 @@ CREATE SEQUENCE public.depsv_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.depsv_id_seq OWNER TO qllgvlhmvkcwsw;
+ALTER TABLE public.depsv_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.depsv_id_seq OWNED BY public.depsv.id;
 
@@ -85,15 +64,7 @@ CREATE TABLE public.munsv (
 );
 
 
-ALTER TABLE public.munsv OWNER TO qllgvlhmvkcwsw;
-
-COMMENT ON TABLE public.munsv IS 'TRIAL';
-
-COMMENT ON COLUMN public.munsv.id IS 'TRIAL';
-
-COMMENT ON COLUMN public.munsv.munname IS 'TRIAL';
-
-COMMENT ON COLUMN public.munsv.depsv_id IS 'TRIAL';
+ALTER TABLE public.munsv OWNER TO postgres;
 
 CREATE SEQUENCE public.munsv_id_seq
     AS integer
@@ -104,7 +75,7 @@ CREATE SEQUENCE public.munsv_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.munsv_id_seq OWNER TO qllgvlhmvkcwsw;
+ALTER TABLE public.munsv_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.munsv_id_seq OWNED BY public.munsv.id;
 
@@ -114,13 +85,7 @@ CREATE TABLE public.zonesv (
 );
 
 
-ALTER TABLE public.zonesv OWNER TO qllgvlhmvkcwsw;
-
-COMMENT ON TABLE public.zonesv IS 'TRIAL';
-
-COMMENT ON COLUMN public.zonesv.id IS 'TRIAL';
-
-COMMENT ON COLUMN public.zonesv.zonename IS 'TRIAL';
+ALTER TABLE public.zonesv OWNER TO postgres;
 
 CREATE SEQUENCE public.zonesv_id_seq
     AS integer
@@ -130,7 +95,7 @@ CREATE SEQUENCE public.zonesv_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.zonesv_id_seq OWNER TO qllgvlhmvkcwsw;
+ALTER TABLE public.zonesv_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.zonesv_id_seq OWNED BY public.zonesv.id;
 
