@@ -7,6 +7,13 @@ DROP DATABASE IF EXISTS el_salvador;
 
 CREATE DATABASE el_salvador with TEMPLATE 'template0' ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
 
+-- -----------------------------------------------------
+-- Se establece la conexión a la base de datos recien creada para ejecutar el script
+-- -----------------------------------------------------
+\c el_salvador;
+
+set search_path = "public";
+
 -- A partir de aca, se puede ejecutar el script completo
 
 -- -----------------------------------------------------
@@ -16,20 +23,20 @@ DROP TABLE IF EXISTS public.depsv;
 
 CREATE TABLE public.depsv
 (
-    id        integer               NOT NULL,
-    depname   character varying(30) NOT NULL,
-    isocode   character(5)          NOT NULL,
-    zonesv_id integer               NOT NULL
+       id        integer               NOT NULL,
+       depname   character varying(30) NOT NULL,
+       isocode   character(5)          NOT NULL,
+       zonesv_id integer               NOT NULL
 );
 
 
 CREATE SEQUENCE public.depsv_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+       AS integer
+       START WITH 1
+       INCREMENT BY 1
+       NO MINVALUE
+       NO MAXVALUE
+       CACHE 1;
 
 ALTER SEQUENCE public.depsv_id_seq OWNED BY public.depsv.id;
 
@@ -40,19 +47,19 @@ DROP TABLE IF EXISTS public.munsv;
 
 CREATE TABLE public.munsv
 (
-    id       integer                NOT NULL,
-    munname  character varying(100) NOT NULL,
-    depsv_id integer                NOT NULL
+       id       integer                NOT NULL,
+       munname  character varying(100) NOT NULL,
+       depsv_id integer                NOT NULL
 );
 
 
 CREATE SEQUENCE public.munsv_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+       AS integer
+       START WITH 1
+       INCREMENT BY 1
+       NO MINVALUE
+       NO MAXVALUE
+       CACHE 1;
 
 
 ALTER SEQUENCE public.munsv_id_seq OWNED BY public.munsv.id;
@@ -64,28 +71,28 @@ DROP TABLE IF EXISTS public.zonesv;
 
 CREATE TABLE public.zonesv
 (
-    id       integer               NOT NULL,
-    zonename character varying(15) NOT NULL
+       id       integer               NOT NULL,
+       zonename character varying(15) NOT NULL
 );
 
 CREATE SEQUENCE public.zonesv_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+       AS integer
+       START WITH 1
+       INCREMENT BY 1
+       NO MINVALUE
+       NO MAXVALUE
+       CACHE 1;
 
 ALTER SEQUENCE public.zonesv_id_seq OWNED BY public.zonesv.id;
 
 ALTER TABLE ONLY public.depsv
-    ALTER COLUMN id SET DEFAULT nextval('public.depsv_id_seq'::regclass);
+       ALTER COLUMN id SET DEFAULT nextval('public.depsv_id_seq'::regclass);
 
 ALTER TABLE ONLY public.munsv
-    ALTER COLUMN id SET DEFAULT nextval('public.munsv_id_seq'::regclass);
+       ALTER COLUMN id SET DEFAULT nextval('public.munsv_id_seq'::regclass);
 
 ALTER TABLE ONLY public.zonesv
-    ALTER COLUMN id SET DEFAULT nextval('public.zonesv_id_seq'::regclass);
+       ALTER COLUMN id SET DEFAULT nextval('public.zonesv_id_seq'::regclass);
 
 -- Volcando datos para la tabla el_salvador.depsv: ~14 rows (aproximadamente)
 INSERT INTO public.depsv
@@ -383,22 +390,22 @@ SELECT pg_catalog.setval('public.munsv_id_seq', 262, true);
 SELECT pg_catalog.setval('public.zonesv_id_seq', 4, true);
 
 ALTER TABLE ONLY public.depsv
-    ADD CONSTRAINT pk_depsv PRIMARY KEY (id);
+       ADD CONSTRAINT pk_depsv PRIMARY KEY (id);
 
 ALTER TABLE ONLY public.munsv
-    ADD CONSTRAINT pk_munsv PRIMARY KEY (id, depsv_id);
+       ADD CONSTRAINT pk_munsv PRIMARY KEY (id, depsv_id);
 
 ALTER TABLE ONLY public.zonesv
-    ADD CONSTRAINT pk_zonesv PRIMARY KEY (id);
+       ADD CONSTRAINT pk_zonesv PRIMARY KEY (id);
 
 CREATE INDEX idx_depsv_id ON public.munsv USING btree (depsv_id);
 
 CREATE INDEX idx_zonesv_id ON public.depsv USING btree (zonesv_id);
 
 ALTER TABLE ONLY public.depsv
-    ADD CONSTRAINT depsv_ibfk_1 FOREIGN KEY (zonesv_id) REFERENCES public.zonesv (id) ON DELETE CASCADE ON UPDATE CASCADE;
+       ADD CONSTRAINT depsv_ibfk_1 FOREIGN KEY (zonesv_id) REFERENCES public.zonesv (id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE ONLY public.munsv
-    ADD CONSTRAINT munsv_ibfk_1 FOREIGN KEY (depsv_id) REFERENCES public.depsv (id) ON DELETE CASCADE ON UPDATE CASCADE;
+       ADD CONSTRAINT munsv_ibfk_1 FOREIGN KEY (depsv_id) REFERENCES public.depsv (id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- PostgreSQL database dump complete
